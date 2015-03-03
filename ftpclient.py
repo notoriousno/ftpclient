@@ -198,8 +198,8 @@ def put(localPath, ftpPath, user='anonymous', pswd='', passive=True, bitLimit=10
     :param offset:
     :return:
     """
-    if not exists(ftpPath):
-        return Failure(Exception("X--- File '{0}' doesn't exist".format(ftpPath)))
+    if not exists(localPath):
+        return Failure(Exception("X--- File '{0}' doesn't exist".format(localPath)))
     ftpClient = ClientCreator(reactor, _FTPClient, USER, PSWD, passive=passive)
     ftpConnection = ftpClient.connectTCP(host, port)
     return ftpConnection.addCallback(__putFile, ftpPath, localPath, bitLimit, offset)
@@ -208,7 +208,7 @@ def put(localPath, ftpPath, user='anonymous', pswd='', passive=True, bitLimit=10
 if __name__=='__main__':
     HOST = 'localhost'
     PORT = 21
-    USER = 'noman'
+    USER = 'notorious'
     PSWD = 'qwerty'
 
     #----- Basic get from FTP -----#
